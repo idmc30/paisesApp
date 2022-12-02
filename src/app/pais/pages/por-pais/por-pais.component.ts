@@ -11,15 +11,21 @@ export class PorPaisComponent{
 
 
   termino  : string  = "hola mundo";
+  hayError : boolean  = false;
   constructor(private paisService : PaisService) { }
 
 
   buscar(){
-    console.log( this.termino);
+    this.hayError =  false;
     const termino =  this.termino;
     this.paisService.buscarPais( termino )
     .subscribe (resp => {
         console.log( resp );
+
+    },(err)=>{
+      console.log('error');
+      console.info( err );
+      this.hayError =  true;
 
     })
 
