@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path:'',
     component: PorPaisComponent,
-    pathMatch: 'full'
+    pathMatch: 'full'   //cuando en la url ingresa vacio
   },
   {
     path:'region',
