@@ -19,8 +19,9 @@ export class PorPaisComponent{
     this.hayError =  false;
     const termino =  this.termino;
     this.paisService.buscarPais( termino )
-    .subscribe (resp => {
-        console.log( resp );
+    .subscribe (pais => {
+        console.log( pais );
+
 
     },(err)=>{
       console.log('error');
