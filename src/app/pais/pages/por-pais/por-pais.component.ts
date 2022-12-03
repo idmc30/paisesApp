@@ -20,20 +20,22 @@ export class PorPaisComponent{
   constructor(private paisService : PaisService) { }
 
 
-  buscar(){
+  buscar( termino : string ){
     this.hayError =  false;
-    const termino =  this.termino;
-    this.paisService.buscarPais( termino )
-    .subscribe (pais => {
-        console.log( pais );
-        this.paises = pais;
+    this.termino =  termino;
 
-    },(err)=>{
 
-      this.hayError =  true;
-      this.paises = [];
+    this.paisService.buscarPais(this.termino).subscribe({
+      next: (paises) => {
+        console.log(paises);
+        this.paises = paises;
+      },
+      error: (error) => {
+        this.hayError = true;
+        this.paises = [];
+    }
+  });
 
-    })
 
   }
 
