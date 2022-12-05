@@ -34,5 +34,13 @@ export class PaisService {
     return this.http.get<Country[]>(url);
   }
 
+  getPaisxCodigo( id : string) : Observable <Country>{
+
+
+    // https://restcountries.com/v3.1/alpha/pe
+        const  url=`${this.apiUrl}/alpha/${id}`
+        return this.http.get<Country>(url);
+      }
+
 
 }
