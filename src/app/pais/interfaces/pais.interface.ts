@@ -54,6 +54,7 @@ export interface Currencies {
   AUD?: Aud;
   CRC?: Aud;
   USD?: Aud;
+  PEN?:Aud;
 }
 
 export interface Aud {
@@ -83,6 +84,9 @@ export interface Idd {
 export interface Languages {
   eng?: string;
   spa?: string;
+  aym?: string;
+  que?: string;
+
 }
 
 export interface Maps {
