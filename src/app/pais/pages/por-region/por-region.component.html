@@ -1,6 +1,6 @@
 
-
-<h3>Buscar por region <small>{{ regionActiva | titlecase }}</small></h3>
+<div class="animate__animated animate__fadeIn animate__faster">
+  <h3>Buscar por region <small>{{ regionActiva | titlecase }}</small></h3>
 <hr>
 <h5>Seleccione la region</h5>
 
@@ -20,6 +20,10 @@
   </div>
 </div>
 <hr>
+</div>
+
+
+
 <div *ngIf="paises.length > 0" class="row">
   <div class="col">
       <app-pais-tabla [paises] = "paises"></app-pais-tabla>

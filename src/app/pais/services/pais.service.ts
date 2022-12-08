@@ -51,7 +51,7 @@ export class PaisService {
 
     // configurar los params de le petiion
     const  params = new HttpParams()
-       .set('fields','fields=name,capital,alpha2code,flag,population,flags');
+       .set('fields','name,capital,alpha2code,flag,population,flags, common');
 
 
 
