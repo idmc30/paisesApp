@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -11,12 +11,17 @@ export class PaisService {
 
    private apiUrl : string = 'https://restcountries.com/v3.1';
 
+   get httpParams(){
+    return  new HttpParams().set('fields','fields=name,capital,alpha2code,flag,population,flags');
+
+   }
 
   constructor(private http : HttpClient) { }
 
   buscarPais( termino : string) : Observable<Country[]>{
 
      const url = `${this.apiUrl}/name/${termino}`;
+    //  return this.http.get<Country[]>(url, {params: this.httpParams});
      return this.http.get<Country[]>(url);
 
      //  otra forma con el operador rxjs
@@ -44,11 +49,15 @@ export class PaisService {
 
    buscaRegion( region : string){
 
-       const flags = 'fields=name,capital,alpha2code,flag,population,flags';
+    // configurar los params de le petiion
+    const  params = new HttpParams()
+       .set('fields','fields=name,capital,alpha2code,flag,population,flags');
+
+
 
     // https://restcountries.com/v3.1/region/europe
-       const url=`${this.apiUrl}/region/${region}?${flags}`;
-       return this.http.get<Country[]>(url)
+       const url=`${this.apiUrl}/region/${region}`;
+       return this.http.get<Country[]>(url,{params})
        .pipe(
         tap(console.log)
         )
