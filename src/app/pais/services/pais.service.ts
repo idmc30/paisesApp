@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Country } from '../interfaces/pais.interface';
 
 @Injectable({
@@ -40,7 +40,21 @@ export class PaisService {
     // https://restcountries.com/v3.1/alpha/pe
         const  url=`${this.apiUrl}/alpha/${id}`
         return this.http.get<Country>(url);
-      }
+   }
+
+   buscaRegion( region : string){
+
+       const flags = 'fields=name,capital,alpha2code,flag,population,flags';
+
+    // https://restcountries.com/v3.1/region/europe
+       const url=`${this.apiUrl}/region/${region}?${flags}`;
+       return this.http.get<Country[]>(url)
+       .pipe(
+        tap(console.log)
+        )
+
+
+   }
 
 
 }
